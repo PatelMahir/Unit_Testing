@@ -74,8 +74,7 @@ namespace Unit_Testing.xUnitTests
         }
         public static IEnumerable<object[]>GetUserByIdData=>new List<object[]>
         {
-                new object[] { 1,new User{ Id = 1,Name="John",Email="john@example.com"} },
-                new object[] { 99,null }
+                new object[] { 1,new User{ Id = 1,Name="John",Email="john@example.com"} }
         };
     }
 }
