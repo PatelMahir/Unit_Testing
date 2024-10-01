@@ -17,7 +17,9 @@ namespace Unit_Testing.xUnitTests
             _mockRepository = new Mock<IUserRepository>();
             _demoService=new UserService(_mockRepository.Object);
         }
-        [Fact]
+        //[Fact]
+        [Theory]
+        [MemberData(nameof(GetUserByIdData))]
         public void GetUserById_ReturnsUser()
         {
             var userId = 1;
@@ -70,5 +72,10 @@ namespace Unit_Testing.xUnitTests
             _demoService.DeleteUser(userId);
             _mockRepository.Verify(repo => repo.DeleteUser(userId), Times.Once);
         }
+        public static IEnumerable<object[]>GetUserByIdData=>new List<object[]>
+        {
+                new object[] { 1,new User{ Id = 1,Name="John",Email="john@example.com"} },
+                new object[] { 99,null }
+        };
     }
 }
